@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <link rel="stylesheet" href="foodapp.css" />
+
+  <body>
+    <div id="navbar">
+      <h3></h3>
+
+      <div class="tabs">
+        <h3><a href="recipeByName.html">Recipe by Name</a></h3>
+        <h3><a href="recipeOfTheDay.html">Recipe of The Day</a></h3>
+        <h3><a href="latestRecipe.html">Latest Recipe</a></h3>
+      </div>
+    </div>
+    <h1>Latest Recipes</h1>
+
+    <div id="data"></div>
+  </body>
+</html>
+
+<script>
+  async function showRecipe() {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/categories.php`
+    );
+    let data = await res.json();
+
+    // console.log(data);
+
+    var div = document.getElementById("data");
+
+    data.categories.forEach((el) => {
+      // let div = document.createElement("div");
+
+      let category = document.createElement("h2");
+      category.innerHTML = `Category: ${el.strCategory}`;
+
+      let p = document.createElement("p");
+      p.innerHTML = `Category-Description: ${el.strCategoryDescription}`;
+
+      let img = document.createElement("img");
+      img.src = el.strCategoryThumb;
+
+      div.append(category, p, img);
+    });
+  }
+
+  showRecipe();
+</script>

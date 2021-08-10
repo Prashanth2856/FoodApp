@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="foodapp.css" />
+  </head>
+
+  <body>
+    <div id="navbar">
+      <h3></h3>
+
+      <div class="tabs">
+        <h3><a href="recipeByName.html">Recipe by Name</a></h3>
+        <h3><a href="recipeOfTheDay.html">Recipe of The Day</a></h3>
+        <h3><a href="latestRecipe.html">Latest Recipe</a></h3>
+      </div>
+    </div>
+    <div class="find">
+      <h1>Search Recipe</h1>
+      <input type="text" name="" id="search" />
+      <button onclick="showRecipe()">Search</button>
+    </div>
+
+    <div id="data"></div>
+  </body>
+</html>
+
+<script>
+  async function showRecipe() {
+    let item = document.getElementById("search").value;
+    if (item == "") {
+      alert("please enter a recipe");
+    } else {
+      let res = await fetch(
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`
+      );
+
+      let data = await res.json();
+
+      // console.log(data);
+
+      let div = document.getElementById("data");
+      div.innerHTML = null;
+
+      let category = document.createElement("h2");
+      category.innerHTML = `Category: ${data.meals[0].strCategory}`;
+
+      let p = document.createElement("p");
+      p.innerHTML = `Recipe :${data.meals[0].strInstructions}`;
+
+      let image = document.createElement("img");
+      image.src = data.meals[0].strMealThumb;
+
+      div.append(category, p, image);
+    }
+  }
+  // showRecipe();
+</script>

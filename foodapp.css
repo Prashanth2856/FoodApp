@@ -1,0 +1,52 @@
+    
+     #navbar {
+         display: flex;
+         justify-content: space-between;
+         padding-left: 4%;
+         padding-right: 4%;
+         border: solid 1px black;
+         background-color: orange;
+     }
+
+     .tabs {
+         display: flex;
+         justify-content: space-between;
+         list-style: none;
+        
+     }
+     #search{
+         width: 30%;
+         height: 25px;
+     }
+     button{
+         height: 30px;
+     }
+
+     a{
+         text-decoration: none;
+         font-size: large;
+         padding-left: 30px;
+         padding-right: 10px;
+     }
+    
+
+     #data {
+         width: 80%;
+         height: 280px;
+         margin: 5% auto;
+     }
+
+     #data>img {
+         width: 23%;
+         height: 250px;
+         margin-left: 40px;
+     }
+
+     #data>p {
+         text-align: left;
+         width: 70%;
+         float: left;
+     }
+     .find{
+         margin-left: 37%;
+     }
